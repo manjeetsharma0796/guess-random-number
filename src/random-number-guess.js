@@ -1,22 +1,24 @@
-const generateRandomNumber = () => {
-  return Math.floor(Math.random() * 10);
-};
+const {instructionCycle} = require('./utils.js');
 
-const isEqual = (value1, value2) => {
-  return value1 === value2;
-};
+class GuessRandomNumber {
+  #randomNumber 
 
-const validator = (callBackFn) => {
-  process.stdin.setEncoding('utf-8');
-  const stdScannerID = setInterval(() => {
-    const data = +process.stdin.read();
-    if(data) {
-      const randomNumber = generateRandomNumber();
-      console.log(randomNumber);
-      const result = callBackFn(data, randomNumber);
-      console.log(result);
-    }  
-  }, 300);
-};
+  constructor() {
+    this.#randomNumber = this.#generateRandomNumber();
+  }
 
-validator(isEqual, generateRandomNumber());
+  #generateRandomNumber() {
+   return Math.floor(Math.random() * 5);
+  }
+
+  isGuessCorrect(guess) {
+    return this.#randomNumber === guess;
+  }
+
+  get number() {
+    return this.#randomNumber;
+  }
+
+}
+
+exports.GuessRandomNumber = GuessRandomNumber;
