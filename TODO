@@ -1,0 +1,6 @@
+Objective:
+  to generate a random number guess game
+
+Requirements:
+  1.Random number generator
+  2.Validator which validates the guess
